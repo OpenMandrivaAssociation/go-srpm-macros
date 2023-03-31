@@ -3,7 +3,7 @@
 
 Name:		go-srpm-macros
 Version:	2
-Release:	20
+Release:	21
 Summary:	RPM macros for building Golang packages for various architectures
 Group:		Development/Libraries
 License:	GPLv3+
