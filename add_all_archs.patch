@@ -1,5 +1,5 @@
---- a/macros.go-srpm
---- b/macros.go-srpm
+--- a/rpm/macros.d/macros.go-srpm
+--- b/rpm/macros.d/macros.go-srpm
 @@ -12,7 +12,7 @@
  # redhat-rpm-macros.
  
