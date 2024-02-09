@@ -1,0 +1,11 @@
+--- a/macros.go-srpm
+--- b/macros.go-srpm
+@@ -12,7 +12,7 @@
+ # redhat-rpm-macros.
+ 
+ # Define arches for PA and SA
+-%golang_arches   %{ix86} x86_64 %{arm} aarch64 ppc64le s390x
++%golang_arches   %{ix86} x86_64 znver1 %{arm} aarch64 ppc64le s390x
+ %gccgo_arches    %{mips}
+ %go_arches       %{golang_arches} %{gccgo_arches}
+ 
