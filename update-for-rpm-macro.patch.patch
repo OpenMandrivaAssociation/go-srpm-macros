@@ -1,0 +1,16 @@
+--- a/rpm/macros.d/macros.go-srpm
++++ b/rpm/macros.d/macros.go-srpm
+@@ -144,11 +144,11 @@ if (goipath == "") then
+ end
+ -- Compute and set spec variables
+ if (forgeurl ~= "") then
+-  rpm.expand("%forgemeta %{?-v} %{?-i} %{?-s} %{?-p} -u " .. forgeurl .. "\\n")
++  rpm.expand("%forgemeta %{?-v} %{?-i} %{?-s} %{?-p} " .. forgeurl .. "\\n")
+   safeset("gourl", forgeurl)
+ else
+   safeset("gourl", "https://" .. goipath)
+-  rpm.expand("%forgemeta %{?-v} %{?-i} -s     %{?-p} -u %{gourl}\\n")
++  rpm.expand("%forgemeta %{?-v} %{?-i} -s     %{?-p} %{gourl}\\n")
+ end
+ if (rpm.expand("%{?forgesource}") ~= "") then
+   safeset("gosource", "%{forgesource}")
