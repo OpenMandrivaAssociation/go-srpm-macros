@@ -1,16 +1,28 @@
 --- a/rpm/macros.d/macros.go-srpm
 +++ b/rpm/macros.d/macros.go-srpm
+@@ -115,10 +115,10 @@ print(result)
+ #             spec variable if it manages to parse it.
+ #   -s  Silently ignore problems in forgeurl, use it if it can be parsed,
+ #       ignore it otherwise.
+-#   -p  Restore problem handling, override -s.
+ #   -v  Be verbose and print every spec variable the macro sets.
+ #   -i  Print some info about the state of spec variables the macro may use or
+ #       set at the end of the processing.
++#   -a  process all sources in one go, instead of using
+ %gometa(u:spvi) %{expand:%{lua:
+ local forgeurl    = rpm.expand("%{?-u*}")
+ if (forgeurl == "") then
 @@ -144,11 +144,11 @@ if (goipath == "") then
  end
  -- Compute and set spec variables
  if (forgeurl ~= "") then
 -  rpm.expand("%forgemeta %{?-v} %{?-i} %{?-s} %{?-p} -u " .. forgeurl .. "\\n")
-+  rpm.expand("%forgemeta %{?-v} %{?-i} %{?-s} %{?-p} " .. forgeurl .. "\\n")
++  rpm.expand("%forgemeta %{?-v} %{?-i} %{?-s} %{?-a} " .. forgeurl .. "\\n")
    safeset("gourl", forgeurl)
  else
    safeset("gourl", "https://" .. goipath)
 -  rpm.expand("%forgemeta %{?-v} %{?-i} -s     %{?-p} -u %{gourl}\\n")
-+  rpm.expand("%forgemeta %{?-v} %{?-i} -s     %{?-p} %{gourl}\\n")
++  rpm.expand("%forgemeta %{?-v} %{?-i} -s     %{?-a} %{gourl}\\n")
  end
  if (rpm.expand("%{?forgesource}") ~= "") then
    safeset("gosource", "%{forgesource}")
