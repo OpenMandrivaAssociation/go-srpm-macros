@@ -3,12 +3,12 @@
 
 Name:		go-srpm-macros
 Version:	2
-Release:	28
+Release:	29
 Summary:	RPM macros for building Golang packages for various architectures
 License:	GPLv3+
 Source0:	https://github.com/gofed/go-macros/archive/%{commit}/go-macros-%{shortcommit}.tar.gz
 Patch0:		add_all_archs.patch
-Patch1:		update-for-rpm-macro.patch
+Patch1:		go-srpm-macros-2-forgemeta.patch
 # for install command
 BuildRequires:	coreutils
 
@@ -18,6 +18,11 @@ BuildArch:	noarch
 The package provides macros for building projects in Go
 on various architectures.
 
+%files
+%{_rpmconfigdir}/macros.d/macros.go-srpm
+
+#-----------------------------------------------------------------------
+
 %prep
 %autosetup -p1 -n go-macros-%{commit}
 
@@ -26,7 +31,4 @@ on various architectures.
 
 %install
 install -pm 0644 -D rpm/macros.d/macros.go-srpm %{buildroot}%{_rpmconfigdir}/macros.d/macros.go-srpm
-
-%files
-%{_rpmconfigdir}/macros.d/macros.go-srpm
 
